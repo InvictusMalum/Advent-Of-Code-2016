@@ -27,7 +27,8 @@ def processRoomCode(letters, sectorID, checksum):
         if letterCounts[checksum[i]] > letterCounts[checksum[i+1]]:
             pass
         elif letterCounts[checksum[i]] == letterCounts[checksum[i+1]]:
-            order = sorted([checksum[i], checksum[i+1]])
+            order = [checksum[i], checksum[i+1]]
+            order.sort()
             if checksum[i] == order[0]:
                 pass
             else:
@@ -43,6 +44,8 @@ def processAllCodes(roomCodes):
         total += processRoomCode(letters, sectorID, checksum)
     return total
 
+letters, sectorID, checksum = splitRoomCode("a-b-c-d-e-f-g-h-987[abcde]")
+print(processRoomCode(letters, sectorID, checksum))
 print(processAllCodes(input))
         
             
